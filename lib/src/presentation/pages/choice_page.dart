@@ -4,16 +4,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../utils/app_strings.dart';
 import '../bloc/choice/choice_bloc.dart';
-import '../widgets/svg_image_widget.dart';
 import '../widgets/choice_button_widget.dart';
+import '../widgets/svg_image_widget.dart';
 
 class ChoicePage extends StatelessWidget {
   const ChoicePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    ChoiceBloc _choiceBloc = BlocProvider.of<ChoiceBloc>(context);
-
     return Scaffold(
       body: Stack(alignment: Alignment.center, children: [
         SvgImageWidget(image: theme.images.choiceBackground),
@@ -26,7 +24,8 @@ class ChoicePage extends StatelessWidget {
               title: AppStrings.trackMyPeriod,
               subtitle: AppStrings.contraceptionAndWellBeing,
               onTap: () {
-                _choiceBloc.add(TrackPeriodChoiceEvent());
+                choiceBloc.add(TrackPeriodChoiceEvent());
+                navigateToDateOfBirthPage(context);
               },
             ),
             SizedBox(
@@ -36,12 +35,17 @@ class ChoicePage extends StatelessWidget {
               title: AppStrings.getPregnant,
               subtitle: AppStrings.learnAboutReproductiveHealth,
               onTap: () {
-                _choiceBloc.add(GetPregnantChoiceEvent());
+                choiceBloc.add(GetPregnantChoiceEvent());
+                navigateToDateOfBirthPage(context);
               },
             ),
           ],
         )
       ]),
     );
+  }
+
+  void navigateToDateOfBirthPage(BuildContext context) {
+    appNavigator.goToDateOfBirth(context);
   }
 }
