@@ -1,6 +1,7 @@
 import 'package:flora_test/src/config/configs/app_config.dart';
 import 'package:flora_test/src/config/configs/dev_config.dart';
 import 'package:flora_test/src/presentation/bloc/choice/choice_bloc.dart';
+import 'package:flora_test/src/presentation/bloc/date_of_birth/date_of_birth_bloc.dart';
 import 'package:flora_test/src/presentation/pages/choice_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,6 +17,9 @@ void main() async {
       providers: [
         BlocProvider<ChoiceBloc>(
           create: (BuildContext context) => ChoiceBloc(),
+        ),
+        BlocProvider<DateOfBirthBloc>(
+          create: (BuildContext context) => DateOfBirthBloc(),
         ),
       ],
       child: const ChoicePage(),

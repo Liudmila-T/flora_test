@@ -6,7 +6,7 @@ import 'custom_picker_widget.dart' as custom;
 class YearPickerWidget extends StatelessWidget {
   const YearPickerWidget({super.key, required this.onYearChanged});
 
-  final ValueChanged<DateTime> onYearChanged;
+  final ValueChanged<int> onYearChanged;
 
   int get countOfYear => 100;
 
@@ -24,13 +24,14 @@ class YearPickerWidget extends StatelessWidget {
         useMagnifier: true,
         magnification: 1.0,
         squeeze: 2,
-        onSelectedItemChanged: (value) {},
+        onSelectedItemChanged: onYearChanged,
         children: List.generate(
-            countOfYear,
-            (index) => Padding(
-                  padding: const EdgeInsets.only(top: 25.0),
-                  child: Text((startYear + index).toString()),
-                )),
+          countOfYear,
+          (index) => Padding(
+            padding: const EdgeInsets.only(top: 25.0),
+            child: Text((startYear + index).toString()),
+          ),
+        ),
       ),
     );
   }

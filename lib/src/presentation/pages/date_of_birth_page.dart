@@ -1,14 +1,22 @@
+import 'package:flora_test/src/presentation/bloc/date_of_birth/date_of_birth_bloc.dart';
 import 'package:flora_test/src/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 
 import '../../config/config.dart';
+import '../widgets/custom_year_picker/year_picker_widget.dart';
 import '../widgets/next_button_widget.dart';
 import '../widgets/svg_image_widget.dart';
 import '../widgets/title_text_widget.dart';
-import '../widgets/custom_year_picker/year_picker_widget.dart';
 
-class DateOfBirthPage extends StatelessWidget {
+class DateOfBirthPage extends StatefulWidget {
   const DateOfBirthPage({super.key});
+
+  @override
+  State<DateOfBirthPage> createState() => _DateOfBirthPageState();
+}
+
+class _DateOfBirthPageState extends State<DateOfBirthPage> {
+  int year = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -27,20 +35,33 @@ class DateOfBirthPage extends StatelessWidget {
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.05,
             ),
-            YearPickerWidget(onYearChanged: (DateTime value) {  },),
+            YearPickerWidget(
+              onYearChanged: (int value) {
+                setState(() {
+                  year = value;
+                });
+              },
+            ),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.24,
             ),
             NextButtonWidget(
               title: AppStrings.next,
               onTap: () {
-                navigateToResultPage(context);
+                onNext(context);
               },
             ),
           ],
         )
       ]),
     );
+  }
+
+  void onNext(BuildContext context) {
+    if (year != 0) {
+      dateOfBirthBloc.add(SelectDateOfBirthEvent(year: year));
+      navigateToResultPage(context);
+    }
   }
 
   void navigateToResultPage(BuildContext context) {
