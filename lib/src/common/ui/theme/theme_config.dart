@@ -1,6 +1,5 @@
 
 import 'package:flora_test/src/common/ui/theme/text_styles_config.dart';
-import 'package:injectable/injectable.dart';
 
 import 'colors_config.dart';
 import 'i_theme_config.dart';

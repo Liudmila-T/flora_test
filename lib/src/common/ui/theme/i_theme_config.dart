@@ -1,6 +1,4 @@
 
-import 'package:injectable/injectable.dart';
-
 import 'colors_config.dart';
 import 'icons_config.dart';
 import 'images_config.dart';
