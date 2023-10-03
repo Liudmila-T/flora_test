@@ -5,6 +5,7 @@ import '../../config/config.dart';
 import '../widgets/next_button_widget.dart';
 import '../widgets/svg_image_widget.dart';
 import '../widgets/title_text_widget.dart';
+import '../widgets/custom_year_picker/year_picker_widget.dart';
 
 class DateOfBirthPage extends StatelessWidget {
   const DateOfBirthPage({super.key});
@@ -24,7 +25,11 @@ class DateOfBirthPage extends StatelessWidget {
               textStyle: theme.textStyles.pageTitle(),
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.6,
+              height: MediaQuery.of(context).size.height * 0.05,
+            ),
+            YearPickerWidget(onYearChanged: (DateTime value) {  },),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.24,
             ),
             NextButtonWidget(
               title: AppStrings.next,

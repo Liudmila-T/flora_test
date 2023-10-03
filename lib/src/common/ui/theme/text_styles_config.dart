@@ -27,4 +27,12 @@ class TextStylesConfig {
       color: color ?? theme.colors.black,
     );
   }
+
+  TextStyle year({Color? color}) {
+    return GoogleFonts.nunito(
+      fontSize: 40,
+      fontWeight: FontWeight.w900,
+      color: color ?? theme.colors.black,
+    );
+  }
 }
