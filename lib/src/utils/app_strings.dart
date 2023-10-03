@@ -8,4 +8,5 @@ class AppStrings {
 
   ///date of birth page
   static const String logInYourDateOfBirth = 'Log in your date of birth';
+  static const String next = 'Next';
 }
