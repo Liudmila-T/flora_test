@@ -8,6 +8,6 @@ class SubTitleTextWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Text(text, style: theme.textStyles.subtitle(),);
+    return  Text(text, style: theme.textStyles.buttonBigSubtitle(),);
   }
 }
