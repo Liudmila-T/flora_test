@@ -9,4 +9,8 @@ class AppStrings {
   ///date of birth page
   static const String logInYourDateOfBirth = 'Log in your date of birth';
   static const String next = 'Next';
+
+  ///result page
+  static const String myChoice = 'My choice:';
+  static const String myDateOfBirth = 'My date of birth:';
 }
