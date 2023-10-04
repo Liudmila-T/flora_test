@@ -1,7 +1,5 @@
 import 'package:flora_test/src/config/config.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../utils/app_strings.dart';
 import '../bloc/choice/choice_bloc.dart';
 import '../widgets/choice_button_widget.dart';
@@ -23,7 +21,7 @@ class ChoicePage extends StatelessWidget {
             ChoiceButtonWidget(
               title: AppStrings.trackMyPeriod,
               subtitle: AppStrings.contraceptionAndWellBeing,
-              onTap: () {
+              onTap: (){
                 choiceBloc.add(TrackPeriodChoiceEvent());
                 navigateToDateOfBirthPage(context);
               },

@@ -1,3 +1,4 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
@@ -5,11 +6,10 @@ part 'choice_event.dart';
 
 part 'choice_state.dart';
 
-@injectable
-@factoryMethod
+@singleton
 class ChoiceBloc extends Bloc<ChoiceEvent, ChoiceState> {
-  ChoiceBloc() : super(EmptyChoiceState()) {
-    on<TrackPeriodChoiceEvent>((event, emit) => emit(TrackPeriodChoiceState()));
-    on<GetPregnantChoiceEvent>((event, emit) => emit(GetPregnantChoiceState()));
+  ChoiceBloc() : super(ChoiceState.empty) {
+    on<TrackPeriodChoiceEvent>((event, emit) => emit(ChoiceState.trackPeriod));
+    on<GetPregnantChoiceEvent>((event, emit) => emit(ChoiceState.getPregnant));
   }
 }

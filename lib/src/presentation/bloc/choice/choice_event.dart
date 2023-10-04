@@ -1,6 +1,9 @@
 part of 'choice_bloc.dart';
 
-abstract class ChoiceEvent {}
+abstract class ChoiceEvent extends Equatable {
+  @override
+  List<Object> get props => [];
+}
 
 class TrackPeriodChoiceEvent extends ChoiceEvent {}
 
