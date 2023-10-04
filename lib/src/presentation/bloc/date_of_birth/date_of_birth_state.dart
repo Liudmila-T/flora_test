@@ -1,13 +1,20 @@
 part of 'date_of_birth_bloc.dart';
 
-abstract class DateOfBirthState {
-  DateOfBirthState();
+abstract class DateOfBirthState extends Equatable{
+  const DateOfBirthState();
+
+  @override
+  List<Object> get props => [];
 }
 
-class EmptyDateOfBirthState extends DateOfBirthState {}
+class EmptyDateOfBirthState extends DateOfBirthState {
+}
 
 class SelectDateOfBirthState extends DateOfBirthState {
-  SelectDateOfBirthState({required this.year});
+  const SelectDateOfBirthState({required this.year});
 
   final int year;
+
+  @override
+  List<Object> get props => [year];
 }
