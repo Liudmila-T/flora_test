@@ -19,13 +19,7 @@ class DateOfBirthPage extends StatefulWidget {
 }
 
 class _DateOfBirthPageState extends State<DateOfBirthPage> {
-  late int year;
-
-  @override
-  void initState() {
-    super.initState();
-    year = startYear;
-  }
+  int? year;
 
   int get numberOfYears => _numberOfYears;
 
@@ -53,6 +47,7 @@ class _DateOfBirthPageState extends State<DateOfBirthPage> {
             BlocBuilder<DateOfBirthBloc, DateOfBirthState>(
                 bloc: dateOfBirthBloc,
                 builder: (context, state) {
+                  checkState(state);
                   return YearPickerWidget(
                     numberOfYears: numberOfYears,
                     startYear: startYear,
@@ -72,8 +67,19 @@ class _DateOfBirthPageState extends State<DateOfBirthPage> {
   }
 
   void onNext() {
-    dateOfBirthBloc.add(SelectDateOfBirthEvent(year: year));
-    navigateToResultPage();
+    if (year != null) {
+      dateOfBirthBloc.add(
+        SelectDateOfBirthEvent(year: year!),
+      );
+    }
+  }
+
+  void checkState(DateOfBirthState state) {
+    if (state is SelectDateOfBirthState) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        navigateToResultPage();
+      });
+    }
   }
 
   void navigateToResultPage() {
